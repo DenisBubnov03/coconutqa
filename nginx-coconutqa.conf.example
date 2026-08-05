@@ -1,0 +1,38 @@
+# Статический лендинг coconutqa.ru (отдельно от LMS coconutschool.ru)
+# Скопировать на ВМ: /etc/nginx/sites-available/coconutqa
+# ln -s /etc/nginx/sites-available/coconutqa /etc/nginx/sites-enabled/
+# Затем: certbot --nginx -d coconutqa.ru -d www.coconutqa.ru
+#
+# Если у друга другой TLD/имя — поменять server_name и путь root.
+
+server {
+    listen 80;
+    server_name coconutqa.ru www.coconutqa.ru;
+
+    root /var/www/coconutqa;
+    index index.html;
+
+    # gzip для HTML/CSS/JS/SVG
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+
+    location /index_files/ {
+        expires 7d;
+        add_header Cache-Control "public";
+        try_files $uri =404;
+    }
+
+    location = /privacy {
+        try_files /privacy.html =404;
+    }
+
+    location = /privacy/ {
+        return 301 /privacy;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

@@ -1,0 +1,167 @@
+/* Декоративные shape не должны перехватывать клики по ссылкам / FAQ */
+#allrecords .tn-elem[data-elem-type="shape"] {
+  pointer-events: none !important;
+}
+
+/* FAQ-аккордеон поверх белой карточки-фона */
+#rec1227326281 .tn-elem[data-elem-id="1753709413509"] {
+  z-index: 4 !important;
+  pointer-events: auto !important;
+}
+
+#rec1227326281 .vaccord,
+#rec1227326281 .vaccord .t585__header,
+#rec1227326281 .vaccord .t585__trigger-button {
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+/* Блок «Паровозик / IT-решение» — правки поверх Tilda */
+
+/* Дубли итоговой фразы (текст уже в одном блоке) */
+#rec1805843161 .tn-elem[data-elem-id="1768845940599000004"],
+#rec1805843161 .tn-elem[data-elem-id="1768845922312000003"] {
+  display: none !important;
+}
+
+#rec1805843161 .tn-elem[data-elem-id="1768845435919000001"] .tn-atom {
+  line-height: 1.35 !important;
+}
+
+/* Зелёная карточка — как в Tilda */
+#rec1805843161 .tn-elem[data-elem-id="1768845196617"] {
+  top: 45px !important;
+  left: calc(50% - 960px + 748px) !important;
+  width: 873px !important;
+  height: 572px !important;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+}
+
+#rec1805843161 .tn-elem[data-elem-id="1768845196617"] .tn-atom {
+  border-radius: 30px !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+@media screen and (max-width: 1919px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768845196617"] {
+    left: calc(50% - 720px + 555px) !important;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1439px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768845196617"] {
+    top: 46px !important;
+    left: calc(50% - 600px + 506px) !important;
+    width: 670px !important;
+    height: 521px !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768845196617"] {
+    top: 466px !important;
+    left: calc(50% - 160px + -29px) !important;
+    width: 378px !important;
+    height: 403px !important;
+  }
+}
+
+/*
+ * Правый блок: те же отступы от карточки, что у левого.
+ * Левая карточка: фон left+30, заголовок top 88, абзацы 225 и 297.
+ * Правая карточка: фон + 30px по горизонтали, те же top по вертикали.
+ */
+@media screen and (min-width: 1920px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768831788475"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788507"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788499"] {
+    left: calc(50% - 960px + 778px) !important;
+  }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768831788475"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788507"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788499"] {
+    left: calc(50% - 720px + 585px) !important;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1439px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768831788475"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788507"],
+  #rec1805843161 .tn-elem[data-elem-id="1768831788499"] {
+    left: calc(50% - 600px + 536px) !important;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  #rec1805843161 .tn-elem[data-elem-id="1768831788475"] {
+    top: 88px !important;
+    width: 574px !important;
+    max-width: 574px !important;
+  }
+
+  #rec1805843161 .tn-elem[data-elem-id="1768831788507"] {
+    top: 225px !important;
+  }
+
+  #rec1805843161 .tn-elem[data-elem-id="1768831788499"] {
+    top: 297px !important;
+  }
+}
+
+#rec1805843161 .tn-elem[data-elem-id="1768831788475"],
+#rec1805843161 .tn-elem[data-elem-id="1768831788507"],
+#rec1805843161 .tn-elem[data-elem-id="1768831788499"] {
+  display: block !important;
+}
+
+#rec1805843161 .tn-elem[data-elem-id="1768831788475"] .tn-atom,
+#rec1805843161 .tn-elem[data-elem-id="1768831788507"] .tn-atom,
+#rec1805843161 .tn-elem[data-elem-id="1768831788499"] .tn-atom {
+  text-align: left !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Битая заглушка портрета (20×25) — прячем до восстановления оригинала */
+#allrecords .tn-elem[data-elem-id="1753704869666"] {
+  display: none !important;
+}
+
+/* Консультация: светлый текст на лаймовой карточке → тёмный */
+#rec1227326216 .tn-elem[data-elem-id="1753374735214"],
+#rec1227326216 .tn-elem[data-elem-id="1753374735214"] .tn-atom,
+#rec1227326216 .tn-elem[data-elem-id="1753374735214"] .tn-atom * {
+  color: #1b1b1b !important;
+}
+
+/* РЕЗУЛЬТАТ (1–2 карточки): сумма у нижнего края, с небольшим отступом */
+#rec1525462821 .tn-elem[data-elem-id="1753804692435"],
+#rec1525462821 .tn-elem[data-elem-id="176243493263169960"] {
+  height: 110px !important;
+}
+
+#rec1525462821 .tn-elem[data-elem-id="1753804692428"],
+#rec1525462821 .tn-elem[data-elem-id="1753804734202"] {
+  height: 110px !important;
+}
+
+#rec1525462821 .tn-elem[data-elem-id="1753804692428"] .tn-atom,
+#rec1525462821 .tn-elem[data-elem-id="1753804734202"] .tn-atom {
+  position: relative !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  padding: 10px 12px 36px !important;
+  line-height: 1.25 !important;
+}
+
+#rec1525462821 .tn-elem[data-elem-id="1753804692428"] .tn-atom span,
+#rec1525462821 .tn-elem[data-elem-id="1753804734202"] .tn-atom span {
+  position: absolute !important;
+  left: 12px !important;
+  bottom: 12px !important;
+}
