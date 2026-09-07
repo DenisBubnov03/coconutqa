@@ -7,6 +7,12 @@
 #rec1227326281 .tn-elem[data-elem-id="1753709413509"] {
   z-index: 4 !important;
   pointer-events: auto !important;
+  overflow: visible !important;
+}
+
+#rec1227326281 .tn-elem[data-elem-id="1753709413509"] .tn-atom {
+  overflow: visible !important;
+  box-sizing: border-box !important;
 }
 
 #rec1227326281 .vaccord,
@@ -14,6 +20,16 @@
 #rec1227326281 .vaccord .t585__trigger-button {
   pointer-events: auto !important;
   cursor: pointer;
+}
+
+/* Длинные ответы FAQ не упираются в край белой карточки */
+#rec1227326281 .vaccord .t585__content,
+#rec1227326281 .vaccord .t585__textwrapper {
+  padding-bottom: 18px !important;
+}
+
+#rec1227326281 .t396__artboard {
+  overflow: visible !important;
 }
 
 /* Блок «Паровозик / IT-решение» — правки поверх Tilda */
@@ -164,4 +180,122 @@
   position: absolute !important;
   left: 12px !important;
   bottom: 12px !important;
+}
+
+/* Кнопки «ХОЧУ РАССРОЧКУ» — поверх фонов карточек */
+#rec1525462821 .tn-elem[data-elem-id="1755512043787"],
+#rec1525462821 .tn-elem[data-elem-id="1755512076311"],
+#rec1525462821 .tn-elem[data-elem-id="1755511648460"] {
+  z-index: 15 !important;
+  pointer-events: auto !important;
+}
+
+/* Попап рассрочки: кнопка «рассрочка от меня» → TG, убираем дубли */
+#rec1805550891 .tn-elem[data-elem-id="1768829177879"],
+#rec1812308011 .tn-elem[data-elem-id="1768829177879"],
+#rec1812307341 .tn-elem[data-elem-id="1768829177879"],
+#rec1805550891 .tn-elem[data-elem-id="1768829837096"],
+#rec1812308011 .tn-elem[data-elem-id="1768829837096"],
+#rec1812307341 .tn-elem[data-elem-id="1768829837096"] {
+  display: none !important;
+}
+
+.installment-popup__free {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #000000 !important;
+  font-weight: 400 !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829177891"] .tn-atom,
+#rec1812308011 .tn-elem[data-elem-id="1768829177891"] .tn-atom,
+#rec1812307341 .tn-elem[data-elem-id="1768829177891"] .tn-atom {
+  line-height: 1.2 !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829800220000007"],
+#rec1812308011 .tn-elem[data-elem-id="1768829800220000007"],
+#rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] {
+  height: auto !important;
+  min-height: 74px !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom,
+#rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom,
+#rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom {
+  height: auto !important;
+  min-height: 74px !important;
+  padding: 12px 16px !important;
+  box-sizing: border-box !important;
+  text-transform: none !important;
+}
+
+/* Tilda кнопки по умолчанию uppercase — «на 6 месяцев» оставляем строчными */
+#rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+#rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+#rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text {
+  text-transform: none !important;
+}
+
+/* Обе кнопки попапа — одинаковый размер основного текста */
+#rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+#rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+#rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+#rec1805550891 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+#rec1812308011 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+#rec1812307341 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text {
+  font-size: 22px !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free,
+#rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free,
+#rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free {
+  font-size: 22px !important;
+  margin-top: 4px !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829396616000004"],
+#rec1812308011 .tn-elem[data-elem-id="1768829396616000004"],
+#rec1812307341 .tn-elem[data-elem-id="1768829396616000004"] {
+  height: auto !important;
+  min-height: 74px !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom,
+#rec1812308011 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom,
+#rec1812307341 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom {
+  height: auto !important;
+  min-height: 74px !important;
+  padding: 12px 16px !important;
+  box-sizing: border-box !important;
+  text-transform: none !important;
+}
+
+#rec1805550891 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+#rec1812308011 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+#rec1812307341 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text {
+  text-transform: none !important;
+}
+
+@media screen and (max-width: 479px) {
+  #rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+  #rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+  #rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text,
+  #rec1805550891 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+  #rec1812308011 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text,
+  #rec1812307341 .tn-elem[data-elem-id="1768829396616000004"] .tn-atom__button-text {
+    font-size: 16px !important;
+  }
+
+  #rec1805550891 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free,
+  #rec1812308011 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free,
+  #rec1812307341 .tn-elem[data-elem-id="1768829800220000007"] .tn-atom__button-text .installment-popup__free {
+    font-size: 16px !important;
+  }
 }
