@@ -3,9 +3,9 @@
   pointer-events: none !important;
 }
 
-/* FAQ-аккордеон поверх белой карточки-фона */
+/* FAQ-аккордеон поверх карточки-фона */
 #rec1227326281 .tn-elem[data-elem-id="1753709413509"] {
-  z-index: 4 !important;
+  z-index: 5 !important;
   pointer-events: auto !important;
   overflow: visible !important;
 }
@@ -15,21 +15,42 @@
   box-sizing: border-box !important;
 }
 
-#rec1227326281 .vaccord,
+/* Фоновая «рамка» FAQ — не перехватывает клики */
+#rec1227326281 .tn-elem[data-elem-id="1753704801096"] {
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+#rec1227326281 .vaccord {
+  z-index: 6 !important;
+  pointer-events: auto !important;
+  position: relative;
+}
+
 #rec1227326281 .vaccord .t585__header,
 #rec1227326281 .vaccord .t585__trigger-button {
   pointer-events: auto !important;
   cursor: pointer;
 }
 
-/* Длинные ответы FAQ не упираются в край белой карточки */
-#rec1227326281 .vaccord .t585__content,
-#rec1227326281 .vaccord .t585__textwrapper {
-  padding-bottom: 18px !important;
+/* Закрытые ответы реально скрыты (иначе текст торчит при +) */
+#rec1227326281 .t585__header:not(.t585__opened) + .t585__content {
+  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-#rec1227326281 .t396__artboard {
-  overflow: visible !important;
+#rec1227326281 .t585__header.t585__opened + .t585__content {
+  display: block !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
+
+#rec1227326281 .vaccord .t585__content,
+#rec1227326281 .vaccord .t585__textwrapper {
+  padding-bottom: 12px !important;
 }
 
 /* Блок «Паровозик / IT-решение» — правки поверх Tilda */

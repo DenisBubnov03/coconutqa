@@ -1,59 +1,116 @@
 /**
  * Fixes for the exported Tilda face_page:
- * 1) FAQ accordion lives inside Zero Block (.vaccord / #rec1227326281),
- *    but t585_init was still pointed at the emptied #rec1227326286.
- * 2) When embedded in the LMS iframe, external links need _blank/_parent
- *    (Telegram/Notion refuse framing).
- * 3) Grow the FAQ artboard + white card when items expand (overflow:hidden otherwise clips).
+ * 1) FAQ accordion lives in Zero Block #rec1227326281 (t585_init was pointed at empty #rec1227326286).
+ * 2) Embed link targets for LMS iframe.
+ * 3) Grow FAQ artboard + white frame shape + html card when accordion expands; shrink on close.
  * 4) Close mobile burger after in-page nav clicks.
  */
 (function () {
-  var FAQ_PAD = 24;
+  var FAQ_PAD = 28;
+  var FAQ_REC = "1227326281";
+  var FAQ_FRAME_ID = "1753704801096"; // white/dark rounded card background
+  var FAQ_HTML_ID = "1753709413509"; // vaccord html container
 
   function initFaqAccordion() {
     if (typeof window.t585_init !== "function") return false;
-    var root = document.getElementById("rec1227326281");
+    var root = document.getElementById("rec" + FAQ_REC);
     if (!root) return false;
     if (root.getAttribute("data-face-faq-inited") === "1") return true;
     if (!root.querySelector(".t585__header")) return false;
-    window.t585_init("1227326281");
+    window.t585_init(FAQ_REC);
     root.setAttribute("data-face-faq-inited", "1");
+
+    // Ensure closed panels are actually hidden (t585 leave display:block + maxHeight:0).
+    root.querySelectorAll(".t585__header").forEach(function (header) {
+      if (!header.classList.contains("t585__opened")) {
+        var content = header.nextElementSibling;
+        if (content && content.classList.contains("t585__content")) {
+          content.style.display = "none";
+          content.style.maxHeight = "";
+          content.setAttribute("hidden", "");
+        }
+      }
+    });
     return true;
   }
 
   function setupAccordHeight() {
-    var accord = document.querySelector("#rec1227326281 .vaccord, .vaccord");
+    var root = document.getElementById("rec" + FAQ_REC);
+    if (!root) return;
+    var accord = root.querySelector(".vaccord");
     if (!accord || accord.getAttribute("data-face-height") === "1") return;
     var artboard = accord.closest(".t396__artboard");
     if (!artboard) return;
     accord.setAttribute("data-face-height", "1");
 
-    var whiteCard = document.querySelector(
-      '#rec1227326281 .tn-elem[data-elem-id="1753709413509"]',
-    );
-    var whiteAtom = whiteCard ? whiteCard.querySelector(".tn-atom") : null;
+    var frame = root.querySelector('.tn-elem[data-elem-id="' + FAQ_FRAME_ID + '"]');
+    var htmlCard = root.querySelector('.tn-elem[data-elem-id="' + FAQ_HTML_ID + '"]');
 
-    var initialAccordHeight = accord.getBoundingClientRect().height;
-    var initialArtboardHeight = artboard.clientHeight;
-    var initialCardHeight = whiteCard
-      ? whiteCard.getBoundingClientRect().height
-      : 0;
+    var baseAccord = 0;
+    var baseArtboard = 0;
+    var baseFrame = 0;
+    var baseHtml = 0;
+    var baselinesReady = false;
+
+    function captureBaselines() {
+      baseAccord = Math.round(accord.getBoundingClientRect().height);
+      baseArtboard = artboard.clientHeight;
+      baseFrame = frame ? Math.round(frame.getBoundingClientRect().height) : 0;
+      baseHtml = htmlCard ? Math.round(htmlCard.getBoundingClientRect().height) : 0;
+      baselinesReady = baseAccord > 0 && baseArtboard > 0;
+    }
+
+    function setHeight(el, px) {
+      if (!el) return;
+      el.style.setProperty("height", px + "px", "important");
+    }
+
+    function restore() {
+      setHeight(artboard, baseArtboard);
+      artboard.style.removeProperty("min-height");
+      if (baseFrame) setHeight(frame, baseFrame);
+      if (baseHtml) setHeight(htmlCard, baseHtml);
+    }
+
+    function expand(diff) {
+      setHeight(artboard, baseArtboard + diff + FAQ_PAD);
+      artboard.style.setProperty(
+        "min-height",
+        baseArtboard + diff + FAQ_PAD + "px",
+        "important",
+      );
+      if (baseFrame) setHeight(frame, baseFrame + diff + FAQ_PAD);
+      if (baseHtml) setHeight(htmlCard, baseHtml + diff + FAQ_PAD);
+    }
+
+    function syncClosedPanels() {
+      root.querySelectorAll(".t585__header").forEach(function (header) {
+        var content = header.nextElementSibling;
+        if (!content || !content.classList.contains("t585__content")) return;
+        if (header.classList.contains("t585__opened")) {
+          content.style.display = "block";
+          content.removeAttribute("hidden");
+        } else {
+          content.style.display = "none";
+          content.style.maxHeight = "";
+          content.setAttribute("hidden", "");
+        }
+      });
+    }
 
     function adjust() {
-      var current = accord.getBoundingClientRect().height;
-      var diff = Math.max(0, current - initialAccordHeight);
-      var nextArtboard = initialArtboardHeight + diff + FAQ_PAD;
-      artboard.style.setProperty("height", nextArtboard + "px", "important");
-      artboard.style.setProperty("min-height", nextArtboard + "px", "important");
-
-      if (whiteCard && initialCardHeight) {
-        var nextCard = initialCardHeight + diff + FAQ_PAD;
-        whiteCard.style.setProperty("height", nextCard + "px", "important");
-        if (whiteAtom) {
-          whiteAtom.style.setProperty("height", "100%", "important");
-        }
+      if (!baselinesReady) return;
+      syncClosedPanels();
+      var current = Math.round(accord.getBoundingClientRect().height);
+      var diff = current - baseAccord;
+      if (diff < 4) {
+        restore();
+      } else {
+        expand(diff);
       }
     }
+
+    captureBaselines();
 
     if (typeof ResizeObserver !== "undefined") {
       new ResizeObserver(function () {
@@ -61,21 +118,24 @@
       }).observe(accord);
     }
 
-    accord.addEventListener("click", function () {
-      setTimeout(adjust, 50);
-      setTimeout(adjust, 350);
-      setTimeout(adjust, 700);
-    });
+    root.addEventListener(
+      "click",
+      function (event) {
+        if (!event.target.closest(".t585__header, .t585__trigger-button")) return;
+        setTimeout(adjust, 40);
+        setTimeout(adjust, 320);
+        setTimeout(adjust, 650);
+      },
+      true,
+    );
 
-    // Recapture baselines after accordion widgets finish opening/layout.
     setTimeout(function () {
-      initialAccordHeight = accord.getBoundingClientRect().height;
-      initialArtboardHeight = artboard.clientHeight;
-      if (whiteCard) {
-        initialCardHeight = whiteCard.getBoundingClientRect().height;
+      var current = Math.round(accord.getBoundingClientRect().height);
+      if (!baselinesReady || current <= baseAccord + 2) {
+        captureBaselines();
       }
       adjust();
-    }, 400);
+    }, 500);
   }
 
   function closeMobileMenu() {
@@ -96,7 +156,6 @@
     var menuRec = document.getElementById("rec1227326181");
     if (!menuRec || menuRec.getAttribute("data-face-menu-close") === "1") return;
     menuRec.setAttribute("data-face-menu-close", "1");
-
     menuRec.addEventListener(
       "click",
       function (event) {
