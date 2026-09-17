@@ -1,0 +1,9 @@
+/* Independent of Tilda element scaling; occupies the free centre of the header. */
+#allrecords .currency-remote-link{position:absolute;z-index:20;top:19px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:12px;box-sizing:border-box;padding:10px 18px;border:1px solid #eeff87;border-radius:40px;background:#eeff87;color:#242426;font:500 16px/1.2 Arial,sans-serif;text-decoration:none;white-space:nowrap;transition:background .2s,box-shadow .2s}
+#allrecords .currency-remote-link:hover{background:#fff;box-shadow:0 0 20px #eeff8725}
+#allrecords .currency-remote-link:focus-visible{outline:3px solid white;outline-offset:4px}
+@media(min-width:1440px){#allrecords .currency-remote-link{top:22px;font-size:19px;padding:12px 22px}}
+@media(max-width:959px){#allrecords .currency-remote-link{position:relative;top:auto;left:auto;transform:none;margin:0 auto 14px;width:max-content;max-width:calc(100% - 24px);font-size:14px;padding:12px 16px}#rec1227326171{padding-top:60px}#allrecords .currency-remote-link{position:absolute;top:8px;left:50%;transform:translateX(-50%)}}
+
+#rec1227326171{position:relative}
+@media(max-width:959px){#rec1227326171{background:#323137}}

@@ -42,3 +42,7 @@ sudo certbot --nginx -d coconutqa.ru -d www.coconutqa.ru
 cd coconutqa && python3 -m http.server 8080
 # http://127.0.0.1:8080
 ```
+
+## Валютные удалёнки
+
+Кнопка в шапке ведёт на `/currency-remote/`. Страница и её ресурсы находятся в папке `currency-remote/`, стили кнопки — в `index_files/currency-remote-link.css`. При выкладке загрузить обе папки и обновлённый `index.html`. Существующая конфигурация nginx обслуживает подстраницу без изменений. Кнопки участия ведут на `https://t.me/Orsroma`.

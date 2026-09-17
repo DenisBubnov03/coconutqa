@@ -1,0 +1,65 @@
+/* Module layouts and original artwork from the programme presentation. */
+.program{background:var(--paper)}
+.roadmap{gap:24px;margin-bottom:64px}
+.roadmap a{padding:0 20px 28px;background:#0e100b}
+.roadmap a>span{margin:0 -20px;padding:8px 18px;position:relative}
+
+.roadmap-art{aspect-ratio:1.5;background:url(module-art.webp) no-repeat;background-size:200% 200%;margin:0 -20px 6px}
+.art-1{background-position:0 0}.art-2{background-position:100% 0}.art-3{background-position:0 100%}.art-4{background-position:100% 100%}
+.roadmap h3{text-transform:uppercase;font-size:25px;line-height:1.12;margin-bottom:18px}
+.roadmap p{max-width:none;margin:0;min-height:0;font-size:16px}
+.module-slides{display:grid;gap:28px}
+.pdf-module{padding:44px;position:relative;background:var(--paper);border:1px solid #dedfd2;overflow:hidden;scroll-margin-top:24px}
+.pdf-module.green{background:#bfeb83;border-color:#bfeb83}
+.pdf-module header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:48px;position:relative;z-index:1}
+.pdf-module h3{font-weight:900;font-size:clamp(28px,3.7vw,46px);line-height:1.04;letter-spacing:-1.2px;text-transform:uppercase;margin:0}
+.module-number{flex-shrink:0;font-size:14px;font-weight:700;line-height:1.1}
+.module-number strong{display:block;font-size:100px;font-weight:900;letter-spacing:-5px;line-height:1}
+.module-copy{position:relative;z-index:1;max-width:880px}
+.pdf-module h4{font-size:23px;line-height:1.2;letter-spacing:-.3px;margin:28px 0 10px}
+.pdf-module .module-copy h4:first-child{margin-top:0}
+.pdf-module p{font-size:21px;line-height:1.4;margin-bottom:24px}
+.pdf-module .module-copy p:last-child{margin-bottom:0}
+.slide-footer{display:flex;justify-content:space-between;gap:16px;font-size:11px;color:#48513d;margin-top:34px;position:relative;z-index:1}
+.module-callout{background:#10120e;color:#f6ff78;border-radius:12px;padding:20px 24px;margin-top:28px;position:relative;z-index:1}
+.pdf-module .module-callout h4{font-size:27px;font-weight:900;text-transform:uppercase;line-height:1.1;margin:0}
+.module-callout small{display:block;color:var(--lime);font-size:12px;font-weight:700;margin-bottom:14px}
+.pdf-module .module-callout p{color:var(--paper);margin:12px 0 0;font-size:18px}
+.linkedin-module .module-copy{width:54%}
+.linkedin-module:after{content:'';position:absolute;right:-60px;top:-130px;width:300px;height:300px;background:var(--yellow);border:1px solid #697445;border-radius:50%}
+.linkedin-art{position:absolute;right:0;bottom:0;width:44%;height:74%;background:url(module-art.webp) 100% 0/200% 200% no-repeat}
+/* Use the original LinkedIn slide artwork without duplicating its embedded wordmark. */
+.linkedin-art{background-image:url(linkedin.webp);background-size:auto 125%;background-position:100% 100%;width:43%;height:73%}
+.support-module{display:grid;grid-template-columns:3fr 2fr;padding:0;border:0}
+.support-copy{padding:44px;display:flex;flex-direction:column}
+.support-copy h3{margin-bottom:60px}
+.support-copy p{font-size:21px;margin-bottom:32px}
+.support-copy .slide-footer{margin-top:auto;padding-top:20px}
+.worm-panel{position:relative;min-height:640px;background:#9baa29;overflow:hidden}
+.worm-panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% center}
+.worm-panel .module-number{position:absolute;top:28px;right:40px}
+.worm-caption{position:absolute;bottom:38px;left:20px;right:20px;padding:20px;background:#10120e;border-radius:14px;color:var(--paper)}
+.pdf-module .worm-caption h4{text-transform:uppercase;color:var(--lime);font-size:15px;margin:0 0 12px}
+.worm-caption dl{margin:0 0 14px}.worm-caption dl>div{display:flex;gap:14px;margin:5px 0;align-items:baseline}.worm-caption dt{font-size:14px;min-width:52px}.worm-caption dd{margin:0;font-weight:800;text-transform:uppercase;font-size:19px;color:var(--yellow)}
+.pdf-module .worm-caption p{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0}.worm-caption p span{font-size:10px}.worm-caption p strong{font-size:29px;color:var(--yellow);letter-spacing:-.8px}
+@media(max-width:1000px){.roadmap a:nth-child(2)>span:after{display:none}.pdf-module{padding:30px}.module-number strong{font-size:78px}.pdf-module p{font-size:18px}.pdf-module h4{font-size:21px}.support-module{padding:0;grid-template-columns:1.15fr 1fr}.support-copy{padding:30px}.support-copy h3{margin-bottom:40px}.support-copy p{font-size:18px}.worm-panel{min-height:620px}.worm-caption{left:14px;right:14px;padding:18px}.worm-caption p strong{font-size:25px}.linkedin-module .module-copy{width:56%}}
+@media(max-width:700px){.roadmap{gap:16px}.roadmap a{padding:0 14px 20px}.roadmap a>span{margin:0 -14px;padding:10px 14px;gap:8px}.roadmap-art{margin:0 -14px 12px}.roadmap h3{font-size:18px}.roadmap p{font-size:13px}.module-slides{gap:18px}.pdf-module{padding:24px 20px}.pdf-module header{gap:12px;margin-bottom:30px}.pdf-module h3{font-size:clamp(22px,5.6vw,34px);letter-spacing:-.7px;overflow-wrap:break-word}.module-number{font-size:9px}.module-number strong{font-size:52px;letter-spacing:-2px}.pdf-module h4{font-size:19px}.pdf-module p{font-size:16px}.pdf-module .module-callout{padding:18px;margin-top:24px}.pdf-module .module-callout h4{font-size:20px}.pdf-module .module-callout p{font-size:15px}.slide-footer{font-size:9px;gap:12px;margin-top:28px}.slide-footer>span:last-child:not(:first-child){text-align:right}.linkedin-module .module-copy{width:100%}.linkedin-art{position:relative;height:280px;width:calc(100% + 40px);margin:24px -20px -24px;background-size:auto 125%;background-position:right bottom}.linkedin-module .slide-footer{margin-top:34px}.linkedin-module:after{width:200px;height:200px;right:-90px;top:-90px}.support-module{padding:0;grid-template-columns:1fr}.support-copy{padding:28px 20px}.support-copy h3{font-size:30px;margin-bottom:30px}.support-copy p{font-size:16px;margin-bottom:24px}.worm-panel{min-height:550px}.worm-panel .module-number{top:24px;right:28px;font-size:12px}.worm-panel .module-number strong{font-size:80px}.worm-caption{bottom:24px;left:20px;right:20px;padding:20px}.worm-caption dd{font-size:18px}.worm-caption p strong{font-size:28px}.pdf-module .worm-caption h4{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.roadmap a{transition:none}}
+.linkedin-module.green{background:#b8ec84;border-color:#b8ec84}
+.linkedin-art{clip-path:polygon(0 9%,60% 9%,60% 20%,100% 20%,100% 100%,0 100%)}
+/* Benefits: full copy and illustrations from slide 03. */
+.pdf-benefits{background:#bfeb83;padding:44px;margin-top:70px}
+.pdf-benefits .eyebrow{margin-bottom:14px;letter-spacing:.5px;color:#48513d}
+.pdf-benefits h2{text-transform:uppercase;font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.04;letter-spacing:-1.3px;margin-bottom:18px}
+.benefits-intro{font-size:21px;margin-bottom:0}
+.pdf-benefits .benefits{gap:20px;margin-top:12px}
+.pdf-benefits .benefits article{display:flex;flex-direction:column;border:0;padding:0;min-width:0}
+.benefit-art{width:70%;aspect-ratio:1;align-self:center;background:url(benefits.webp) no-repeat;background-size:300% 100%;position:relative;z-index:1;margin-bottom:-12px}
+.benefit-time{background-position:left center}.benefit-money{background-position:center}.benefit-world{background-position:right center}
+.benefit-copy{background:#10120e;padding:22px 18px 18px;border-radius:14px;flex:1}
+.pdf-benefits .benefits h3{color:var(--yellow);text-transform:uppercase;font-size:25px;line-height:1.07;letter-spacing:-.4px;margin-bottom:18px}
+.pdf-benefits .benefits article:nth-child(2) h3{color:var(--lime)}
+.pdf-benefits .benefits p{color:var(--paper);font-size:18px;line-height:1.35;max-width:none;margin-bottom:0}
+.pdf-benefits .slide-footer{margin-top:16px}
+@media(min-width:701px) and (max-width:1000px){.pdf-benefits{padding:30px}.pdf-benefits .benefits{gap:12px}.benefit-copy{padding:20px 14px}.pdf-benefits .benefits h3{font-size:20px}.pdf-benefits .benefits p{font-size:16px}}
+@media(max-width:700px){.pdf-benefits{padding:28px 20px;margin-top:40px}.pdf-benefits h2{font-size:clamp(23px,6.2vw,38px);letter-spacing:-.6px}.benefits-intro{font-size:17px}.pdf-benefits .benefits{grid-template-columns:1fr;gap:24px;margin-top:20px}.benefit-art{width:180px;max-width:75%;margin-bottom:-10px}.benefit-copy{padding:24px 20px}.pdf-benefits .benefits h3{font-size:24px}.pdf-benefits .benefits p{font-size:16px}}
