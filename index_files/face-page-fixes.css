@@ -320,3 +320,31 @@
     font-size: 16px !important;
   }
 }
+
+/* Главный заголовок в нулевом блоке: без браузерных отступов h1 */
+#rec1227326171 h1.tn-atom {
+  margin: 0;
+  font-weight: inherit;
+}
+
+.site-footer {
+  margin: 0;
+  padding: 28px 24px 36px;
+  background: #323137;
+  color: #b8b7b2;
+  font: 14px/1.5 Arial, sans-serif;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.site-footer p + p {
+  margin-top: 8px;
+}
+
+.site-footer a {
+  color: #f5ff82;
+}
