@@ -4,14 +4,20 @@
 # nginx -t && systemctl reload nginx
 #
 # http и www всегда уходят на https://coconutqa.ru
-# Несуществующий адрес отдаёт 404, а не копию главной.
-# Пути сертификатов — стандартные для certbot. Если nginx -t ругается на ssl,
-# оставьте ssl_certificate из уже рабочего файла.
+# valutka.coconutqa.ru отдаёт папку currency-remote/
+# /currency-remote/ на основном домене редиректит на субдомен
+# Пути сертификатов — стандартные для certbot.
 
 server {
     listen 80;
     server_name coconutqa.ru www.coconutqa.ru;
     return 301 https://coconutqa.ru$request_uri;
+}
+
+server {
+    listen 80;
+    server_name valutka.coconutqa.ru;
+    return 301 https://valutka.coconutqa.ru$request_uri;
 }
 
 server {
@@ -65,6 +71,36 @@ server {
     location = /privacy/ {
         return 301 /privacy;
     }
+
+    location = /currency-remote {
+        return 301 https://valutka.coconutqa.ru/;
+    }
+
+    location ^~ /currency-remote/ {
+        rewrite ^/currency-remote/(.*)$ https://valutka.coconutqa.ru/$1 permanent;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name valutka.coconutqa.ru;
+
+    ssl_certificate /etc/letsencrypt/live/valutka.coconutqa.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/valutka.coconutqa.ru/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    root /var/www/coconutqa/currency-remote;
+    index index.html;
+
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml;
 
     location / {
         try_files $uri $uri/ =404;

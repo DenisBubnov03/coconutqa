@@ -32,9 +32,11 @@ sudo nginx -t && sudo systemctl reload nginx
 
 ```bash
 sudo certbot --nginx -d coconutqa.ru -d www.coconutqa.ru
+sudo certbot --nginx -d valutka.coconutqa.ru
 ```
 
 5. Проверка: открыть `https://coconutqa.ru` → кнопка «Войти в школу» должна вести на LMS login.
+   Валютка: `https://valutka.coconutqa.ru` (DNS `A` для `valutka` → тот же IP).
 
 ## Локально посмотреть
 
@@ -45,4 +47,4 @@ cd coconutqa && python3 -m http.server 8080
 
 ## Валютные удалёнки
 
-Кнопка в шапке ведёт на `/currency-remote/`. Страница и её ресурсы находятся в папке `currency-remote/`, стили кнопки — в `index_files/currency-remote-link.css`. При выкладке загрузить обе папки и обновлённый `index.html`. Существующая конфигурация nginx обслуживает подстраницу без изменений. Кнопки участия ведут на `https://t.me/Orsroma`.
+Кнопка в шапке ведёт на `https://valutka.coconutqa.ru/`. Файлы — в `currency-remote/`, стили кнопки — в `index_files/currency-remote-link.css`. Nginx отдаёт папку с `valutka.coconutqa.ru`, старый путь `/currency-remote/` редиректит на субдомен. CTA → `https://t.me/coconut_Qa`.
